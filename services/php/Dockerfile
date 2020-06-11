@@ -22,3 +22,5 @@ RUN sed -i "s@http://deb.debian.org@http://mirrors.aliyun.com@g" /etc/apt/source
 	    
 ENV COMPOSER_HOME=/tmp/composer
 
+WORKDIR /var/www
+
