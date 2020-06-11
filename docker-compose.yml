@@ -66,10 +66,12 @@ services:
 
   # RabbitMQ
   rabbitmq:
-    image: rabbitmq:3.8.4
+    image: rabbitmq:3.8.4-management
     container_name: rabbitmq
+    hostname: my-rabbit
     ports:
       - "5672:5672"
+      - "15672:15672"
     volumes:
       - ./data/rabbitmq/:/var/lib/rabbitmq/:rw
       - ./services/rabbitmq/rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf:ro
