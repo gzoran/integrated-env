@@ -1,0 +1,36 @@
+# integrated-env alias
+alias dxphp='docker exec -it php /bin/bash'
+alias dxnginx='docker exec -it nginx /bin/bash'
+alias dxmysql='docker exec -it mysql /bin/bash'
+alias dxredis='docker exec -it redis /bin/bash'
+alias dxrabbitmq='docker exec -it rabbitmq /bin/bash'
+
+# php
+dphp () {
+    tty=
+    tty -s && tty=--tty
+    docker run \
+        $tty \
+        --interactive \
+        --rm \
+        --volume $PWD:/var/www/html/:rw \
+        --workdir /var/www/html \
+        integrated-env_php php "$@"
+}
+
+# composer
+dcomposer () {
+    tty=
+    tty -s && tty=--tty
+    docker run \
+        $tty \
+        --interactive \
+        --rm \
+        --user $(id -u):$(id -g) \
+        --volume /etc/passwd:/etc/passwd:ro \
+        --volume /etc/group:/etc/group:ro \
+        --volume ~/dnmp/data/composer:/tmp/composer \
+        --volume $(pwd):/app \
+        --workdir /app \
+        integrated-env_php composer "$@"
+}
