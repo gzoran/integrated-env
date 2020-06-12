@@ -1,4 +1,5 @@
-FROM php:7.4.6-fpm
+ARG PHP_VERSION
+FROM php:${PHP_VERSION}-fpm
 
 RUN sed -i "s@http://deb.debian.org@http://mirrors.aliyun.com@g" /etc/apt/sources.list \
 	&& rm -rf /var/lib/apt/lists/* \

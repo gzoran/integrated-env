@@ -3,6 +3,8 @@ alias dxphp='docker exec -it php /bin/bash'
 alias dxnginx='docker exec -it nginx /bin/bash'
 alias dxmysql='docker exec -it mysql /bin/bash'
 alias dxredis='docker exec -it redis /bin/bash'
+alias dxelasticsearch='docker exec -it elasticsearch /bin/bash'
+alias dxkibana='docker exec -it kibana /bin/bash'
 alias dxrabbitmq='docker exec -it rabbitmq /bin/bash'
 
 # php
@@ -13,8 +15,8 @@ dphp () {
         $tty \
         --interactive \
         --rm \
-        --volume $PWD:/var/www/html/:rw \
-        --workdir /var/www/html \
+        --volume $PWD:/var/www/:rw \
+        --workdir /var/www/ \
         integrated-env_php php "$@"
 }
 
