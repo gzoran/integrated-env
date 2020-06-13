@@ -17,6 +17,7 @@ RUN sed -i "s@http://deb.debian.org@http://mirrors.aliyun.com@g" /etc/apt/source
         && docker-php-ext-install bcmath \
         && docker-php-ext-install pcntl \
         && docker-php-ext-install pdo_mysql \
+        && pecl install redis && docker-php-ext-enable redis \
         && curl -o /usr/bin/composer https://mirrors.aliyun.com/composer/composer.phar \
 	&& chmod +x /usr/bin/composer \
         && usermod -u 1000 www-data && groupmod -g 1000 www-data
