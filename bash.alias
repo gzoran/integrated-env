@@ -1,5 +1,6 @@
 # integrated-env
 export INTEGRATED_ENV_PATH="/Users/chenzhengzhe/Vms/Share/integrated-env"
+export INTEGRATED_ENV_NETWORK="integrated-env_default"
 
 # alias
 alias dxphp='docker exec -it php /bin/bash'
@@ -18,6 +19,7 @@ dphp () {
         $tty \
         --interactive \
         --rm \
+        --network $INTEGRATED_ENV_NETWORK \
         --volume $PWD:/var/www/:rw \
         --workdir /var/www/ \
         integrated-env_php php "$@"
@@ -32,6 +34,7 @@ dcomposer () {
         --interactive \
         --rm \
         --user $(id -u):$(id -g) \
+        --network $INTEGRATED_ENV_NETWORK \
         --volume /etc/passwd:/etc/passwd:ro \
         --volume /etc/group:/etc/group:ro \
         --volume $INTEGRATED_ENV_PATH/data/composer:/tmp/composer \
