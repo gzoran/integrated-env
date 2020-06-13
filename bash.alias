@@ -1,4 +1,7 @@
-# integrated-env alias
+# integrated-env
+export INTEGRATED_ENV_PATH="/Users/chenzhengzhe/Vms/Share/integrated-env"
+
+# alias
 alias dxphp='docker exec -it php /bin/bash'
 alias dxnginx='docker exec -it nginx /bin/bash'
 alias dxmysql='docker exec -it mysql /bin/bash'
@@ -31,7 +34,7 @@ dcomposer () {
         --user $(id -u):$(id -g) \
         --volume /etc/passwd:/etc/passwd:ro \
         --volume /etc/group:/etc/group:ro \
-        --volume ~/dnmp/data/composer:/tmp/composer \
+        --volume $INTEGRATED_ENV_PATH/data/composer:/tmp/composer \
         --volume $(pwd):/app \
         --workdir /app \
         integrated-env_php composer "$@"

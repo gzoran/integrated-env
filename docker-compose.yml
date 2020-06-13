@@ -15,8 +15,8 @@ services:
       - ${APP_DIR}/:/var/www/:rw
       - ./services/php/php.ini:/usr/local/etc/php/php.ini:ro
       - ./services/php/php-fpm.conf:/usr/local/etc/php-fpm.d/www.conf:ro
-      - ${LOG_DIR}/php/:/var/log/php/
-      - ${DATA_DIR}/composer/:/tmp/composer/
+      - ${LOG_DIR}/php/:/var/log/php/:rw
+      - ${DATA_DIR}/composer/:/tmp/composer/:rw
     restart: always
     cap_add:
       - SYS_PTRACE
