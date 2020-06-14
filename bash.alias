@@ -22,7 +22,7 @@ dphp () {
         --network $INTEGRATED_ENV_NETWORK \
         --volume $PWD:/var/www/:rw \
         --workdir /var/www/ \
-        integrated-env_php php "$@"
+        integrated-env_php /bin/sh -c "php $@"
 }
 
 # composer
@@ -40,5 +40,5 @@ dcomposer () {
         --volume $INTEGRATED_ENV_PATH/data/composer:/tmp/composer \
         --volume $(pwd):/app \
         --workdir /app \
-        integrated-env_php composer "$@"
+        integrated-env_php /bin/sh -c "composer $@"
 }
